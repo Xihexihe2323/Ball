@@ -9,5 +9,5 @@ container.addEventListener('mousemove', (event) => {
     const posY = event.clientY - rect.top - bola.offsetHeight / 2;
 
     // Pembatasan agar bola tidak keluar dari container
-    bola.style.transform = translate(${Math.max(0, Math.min(posX, 350))}px, ${Math.max(0, Math.min(posY, 350))}px);
+    bola.style.transform = `translate(${Math.max(0, Math.min(posX, rect.width - bola.offsetWidth))}px, ${Math.max(0, Math.min(posY, rect.height - bola.offsetHeight))}px)`;
 });
