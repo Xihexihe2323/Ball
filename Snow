@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salju Jatuh</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(to bottom, white, lightblue);
+            overflow: hidden;
+            position: relative;
+        }
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-10%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            const size = Math.random() * 5 + 2; // Ukuran antara 2px dan 7px
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.left = `${Math.random() * window.innerWidth}px`;
+            snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`; // Durasi antara 2s dan 5s
+            snowflake.style.animationDelay = `${Math.random() * 2}s`;
+            document.body.appendChild(snowflake);
+
+            // Hapus salju setelah animasi selesai
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+
+        // Buat salju setiap 200ms
+        setInterval(createSnowflake, 200);
+    </script>
+</body>
+</html>
